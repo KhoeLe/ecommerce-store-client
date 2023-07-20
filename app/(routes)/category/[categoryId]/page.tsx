@@ -33,16 +33,14 @@ function CategoryPage({ params, searchParams }: Props) {
         colorId: searchParams.colorId,
         sizeId: searchParams.sizeId,
     });
-    // const { data: colors } = useColor();
-    // const { data: sizes } = useSizes();
     const sizes: Size[] | undefined = useSizes().data as Size[] | undefined;
     const colors: Color[] | undefined = useColor().data as Color[] | undefined;
 
 
-    const combinedData: (Color | Size)[] =[...(colors || []), ...(sizes || [])];
+    const combinedData: (Color | Size)[] = [...(colors || []), ...(sizes || [])];
     return (
         <>
-            {!isFetching ? (
+            {!isLoading ? (
                 <div className="bg-white">
                     <div className="space-y-10 pb-10">
                         <BillBoard data={data?.billboard} />
@@ -80,7 +78,7 @@ function CategoryPage({ params, searchParams }: Props) {
                     </div>
                 </div>
             ) : (
-                <Loading />
+                <Loading length={products} />
             )}
         </>
     );

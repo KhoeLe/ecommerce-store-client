@@ -2,20 +2,49 @@
 import Button from '@/components/ui/button'
 import Currency from '@/components/ui/currency'
 import useCart from '@/stores/useCart';
-import React from 'react'
+import { useSearchParams } from 'next/navigation';
+import React, { useEffect } from 'react'
+import toast from 'react-hot-toast';
 
 
 function Summary() {
 
-    const items = useCart((state) => state.items);
+  const searchParams = useSearchParams();
+  const items = useCart((state) => state.items);
+  const removeAll = useCart((state) => state.removeAll);
 
-    const totalPrice = items.reduce((total, item) => {
-        return total + Number(item.price)
-      }, 0);
-
-    const onCheckout = () => {
-
+  useEffect(() => {
+    if (searchParams.get('success')) {
+      toast.success('Payment completed.');
+      removeAll();
     }
+
+    if (searchParams.get('canceled')) {
+      toast.error('Something went wrong.');
+    }
+  }, [searchParams, removeAll]);
+
+  const totalPrice = items.reduce((total, item) => {
+    return total + Number(item.price)
+  }, 0);
+
+  const onCheckout = async () => {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        productIds: items.map((item) => item.id)
+      })
+    })
+
+    const data = await res.json()
+
+    window.location.href = data.url
+
+    console.log(data)
+  }
 
   return (
     <div
@@ -27,7 +56,7 @@ function Summary() {
       <div className="mt-6 space-y-4">
         <div className="flex items-center justify-between border-t border-gray-200 pt-4">
           <div className="text-base font-medium text-gray-900">Order total</div>
-         <Currency value={totalPrice} />
+          <Currency value={totalPrice} />
         </div>
       </div>
       <Button onClick={onCheckout} disabled={items.length === 0} className="w-full mt-6">

@@ -3,14 +3,21 @@
 import { useBillBoard } from "@/hooks";
 import BillBoard from "./ui/billboard";
 import Loading from "@/app/(routes)/loading";
+import BillBoardLoading from "./ui/billboard-loading";
 
 function BillBoardDefault() {
     const { data, isFetching, isLoading } = useBillBoard(
-        "0e12e5cf-29ab-4529-b8d5-c5371dae1f7b"
+        "f3ec1652-4379-4c5a-87aa-db6d5616cd74"
     );
 
+    if (isLoading) {
+        return (
+            <BillBoardLoading />
+        )
+    }
+
     return (
-        <>{!isFetching ? <BillBoard data={data} /> : <div><Loading /></div>  }</>
+        <BillBoard  data={data} />
     );
 }
 
