@@ -24,6 +24,7 @@ function CartItem({data}:Props) {
         fill
         src={data.images[0].url}
         alt=""
+        quality={40}
         className="object-cover object-center"
       />
     </div>

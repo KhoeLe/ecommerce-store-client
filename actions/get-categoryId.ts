@@ -1,9 +1,11 @@
 "use server";
 
-const URL = `https://next13-ecommerce-admin.vercel.app/api/c4fc8d10-e419-4c27-9124-5ac7030e581f/categories`;
+const URL = `${process.env.NEXT_PUBLIC_API_URL}/categories`;
 
 export const getCategoryId = async (id: string) => {
-    const res = await fetch(`${URL}/${id}`);
+    const res = await fetch(`${URL}/${id}`, {
+        cache: "no-cache",
+    });
 
     if (!res.ok) {
         // This will activate the closest `error.js` Error Boundary

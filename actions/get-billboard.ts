@@ -1,9 +1,11 @@
 "use server";
 
-const URL = `https://next13-ecommerce-admin.vercel.app/api/c4fc8d10-e419-4c27-9124-5ac7030e581f/billboards`;
+const URL = `${process.env.NEXT_PUBLIC_API_URL}/billboards`;
 
-export const getBillBoards = async (id: string) : Promise<Billboard>=> {
-    const res = await fetch(`${URL}/${id}`);
+export const getBillBoards = async (id: string): Promise<Billboard> => {
+    const res = await fetch(`${URL}/${id}`, {
+        cache: "no-cache",
+    });
 
     if (!res.ok) {
         // This will activate the closest `error.js` Error Boundary

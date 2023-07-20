@@ -39,7 +39,7 @@ function Filter({ name, data, valueKey }: Props) {
             { skipNull: true }
         );
 
-        router.push(url);
+        router.push(url, { scroll: false });
     };
 
     return (

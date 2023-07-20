@@ -7,14 +7,13 @@ import { useRouter } from 'next/navigation';
 import usePreviewModal from '@/stores/usePreviewModal';
 import Currency from './currency';
 import useCart from '@/stores/useCart';
-import { add } from 'date-fns';
 
 interface Props {
-    data: Product
+  data: Product
 }
 
 
-function ProductCard({data}: Props) {
+function ProductCard({ data }: Props) {
 
   const previewModal = usePreviewModal()
   const cart = useCart()
@@ -37,21 +36,22 @@ function ProductCard({data}: Props) {
   }
 
   return (
-    <div  className="bg-white group cursor-pointer rounded-xl border p-3 space-y-4">
+    <div className="bg-white group cursor-pointer rounded-xl border p-3 space-y-4">
       {/* Image & actions */}
-      <div onClick={handleClick}  className="aspect-square rounded-xl bg-gray-100 relative">
+      <div onClick={handleClick} className="aspect-square rounded-xl bg-gray-100 relative">
         <Image
           src={data.images?.[0]?.url}
           alt={data.name}
           width={500}
           height={500}
+          quality={40}
           sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
           className="aspect-square object-cover rounded-md"
         />
         <div className="opacity-0 group-hover:opacity-100 transition absolute w-full px-6 bottom-5">
           <div className="flex gap-x-6 justify-center">
             <IconButton
-             onClick={onPreview}
+              onClick={onPreview}
               icon={<Expand size={20} className="text-gray-600" />}
             />
             <IconButton

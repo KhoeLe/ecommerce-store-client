@@ -8,5 +8,6 @@ export const CONSTANT = {
         CATEGORY_ID: "CATEGORY_ID",
         COLOR: "COLOR",
         SIZE: "SIZE",
+        CATEGORIES: "CATEGORIES",
     },
 };

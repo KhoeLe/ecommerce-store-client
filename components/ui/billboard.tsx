@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 interface Props {
     data: Billboard | undefined;
 }
@@ -12,6 +14,13 @@ function BillBoard({ data }: Props) {
                         {data?.label}
                     </div>
                 </div>
+                <Image
+                    src={data?.imageUrl || ""}
+                    fill
+                    alt="Background Image"
+                    quality={40}
+                    className="hidden"
+                />
             </div>
         </div>
     );
