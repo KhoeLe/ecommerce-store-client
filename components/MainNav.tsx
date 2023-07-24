@@ -1,7 +1,7 @@
 "use client"
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
-import React from 'react'
+import React, { useMemo } from 'react'
 import { usePathname } from 'next/navigation'
 interface Props {
   data: Category[]
@@ -11,11 +11,15 @@ function MainNav({ data }: Props) {
 
   const pathname = usePathname()
 
-  const routes = data?.map((route) => ({
-    href: `/category/${route.id}`,
-    label: route.name,
-    active: pathname === `/category/${route.id}`
-  }))
+  const routes = useMemo(() => {
+    if (!data) return [];
+    return data.map((route) => ({
+      href: `/category/${route.id}`,
+      label: route.name,
+      active: pathname === `/category/${route.id}`
+    }));
+  }, [data, pathname]);
+
 
   return (
     <div className='mx-6 flex items-center space-x-4 lg:space-x-6'>
@@ -27,7 +31,6 @@ function MainNav({ data }: Props) {
           {route.label}
         </Link>
       ))}
-
     </div>
   )
 }
