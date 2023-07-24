@@ -2,7 +2,6 @@
 
 import BillBoard from "@/components/ui/billboard";
 import { useCategoryId, useProductFeatured } from "@/hooks";
-import { useParams } from "next/navigation";
 import Filter from "./components/filter";
 import { useColor } from "@/hooks/useColors";
 import { useSizes } from "@/hooks/useSizes";
@@ -10,6 +9,7 @@ import NoResults from "@/components/ui/no-results";
 import ProductCard from "@/components/ui/product-card";
 import MobileFilter from "./components/mobile-filter";
 import Loading from "./loading";
+import { useMemo } from "react";
 
 interface Props {
     params: {
@@ -26,8 +26,6 @@ function CategoryPage({ params, searchParams }: Props) {
     const {
         data: products,
         isLoading,
-        isFetching,
-        error,
     } = useProductFeatured({
         categoryId: params.categoryId,
         colorId: searchParams.colorId,
@@ -36,8 +34,10 @@ function CategoryPage({ params, searchParams }: Props) {
     const sizes: Size[] | undefined = useSizes().data as Size[] | undefined;
     const colors: Color[] | undefined = useColor().data as Color[] | undefined;
 
+    const combinedData = useMemo(() => {
+        return [...(colors || []), ...(sizes || [])];
+    }, [colors, sizes]);
 
-    const combinedData: (Color | Size)[] = [...(colors || []), ...(sizes || [])];
     return (
         <>
             {!isLoading ? (
@@ -78,7 +78,7 @@ function CategoryPage({ params, searchParams }: Props) {
                     </div>
                 </div>
             ) : (
-                <Loading length={products} />
+                <Loading />
             )}
         </>
     );
