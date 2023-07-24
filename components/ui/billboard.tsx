@@ -13,9 +13,7 @@ function BillBoard({ data }: Props) {
                     height={900}
                     resource="responsive"
                     src={data?.imageUrl || ""}
-                    quality={90}
                     alt="billBoard" />
-
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                     <div className="font-bold text-3xl sm:text-5xl lg:text-6xl sm:max-w-xl max-w-xs text-center">
                         {data?.label}
