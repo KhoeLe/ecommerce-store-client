@@ -63,7 +63,7 @@ function Summary() {
 
       </div>
       <Button onClick={onCheckout} disabled={items.length === 0} className="w-full mt-6">
-        {!loading ? (
+        {loading ? (
           <div className='flex justify-center cursor-wait'>
             <svg
               xmlns="http://www.w3.org/2000/svg"
