@@ -44,7 +44,6 @@ function ProductCard({ data }: Props) {
           alt={data.name}
           width={500}
           height={500}
-          quality={40}
           sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
           className="aspect-square object-cover rounded-md"
         />
