@@ -1,3 +1,4 @@
+"use client"
 
 import { Expand, ShoppingCart } from 'lucide-react'
 import React, { MouseEventHandler } from 'react'

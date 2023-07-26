@@ -9,7 +9,7 @@ function NavbarActions() {
     const [mounted, setMounted] = useState<boolean>(false);
 
     const cart = useCart()
-    const router  = useRouter()
+    const router = useRouter()
 
     useEffect(() => {
         setMounted(true);
