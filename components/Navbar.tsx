@@ -1,7 +1,7 @@
 import Link from "next/link";
 import MainNav from "./MainNav";
 import NavbarActions from "./NavbarActions";
-import { getCategories } from "@/actions/get-categories";
+import { getCategories } from "@/actions";
 
 async function Navbar() {
 

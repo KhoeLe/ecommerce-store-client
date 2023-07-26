@@ -1,3 +1,4 @@
+"use client";
 import Button from "@/components/ui/button";
 import IconButton from "@/components/ui/icon-button";
 import { Dialog } from "@headlessui/react";
@@ -5,17 +6,17 @@ import { Plus, X } from "lucide-react";
 import { useState } from "react";
 import Filter from "./filter";
 
-interface Props{
-    sizes: Size[],
+interface Props {
+  sizes: Size[],
   colors: Color[],
 }
 
-function MobileFilter({sizes, colors}: Props) {
+function MobileFilter({ sizes, colors }: Props) {
 
-    const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
-    const onOpen = () => setOpen(true);
-    const onClose = () => setOpen(false);
+  const onOpen = () => setOpen(true);
+  const onClose = () => setOpen(false);
 
 
   return (

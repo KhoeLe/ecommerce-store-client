@@ -1,5 +1,4 @@
 "use server";
-
 import qs from "query-string";
 
 const URL = `${process.env.NEXT_PUBLIC_API_URL}/products`;
@@ -22,9 +21,7 @@ export const getProductsFeatured = async (query: Query): Promise<Product[]> => {
         },
     });
 
-    const res = await fetch(url, {
-        cache: "no-cache",
-    });
+    const res = await fetch(url);
 
     if (!res.ok) {
         // This will activate the closest `error.js` Error Boundary

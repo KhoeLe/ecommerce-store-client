@@ -1,27 +1,18 @@
-"use client";
-import { useProductFeatured } from "@/hooks";
 import ProductList from "./ui/product-list";
-import ProductCardLoading from "./ui/product-card-loading";
 
-function ProductFeatured() {
-    const { data, isLoading, isFetching, isError, } = useProductFeatured({
-        isFeatured: true,
-    });
+interface Props {
+    title: string;
+    data: Product[] | undefined;
+}
+
+
+async function ProductFeatured({ title, data }: Props) {
 
     return (
         <>
-            {isLoading ? (
-                <div className="space-y-4">
-
-                    <ProductCardLoading />
-                </div>
-            ) : isError ? (
-                <div>Something went wrong while fetching data...</div>
-            ) : (
-                <div className="space-y-4">
-                    <ProductList title="Product Featured" data={data} />
-                </div>
-            )}
+            <div className="space-y-4">
+                <ProductList title="Product Featured" data={data} />
+            </div>
         </>
     );
 }

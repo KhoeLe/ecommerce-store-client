@@ -3,9 +3,7 @@
 const URL = `${process.env.NEXT_PUBLIC_API_URL}/billboards`;
 
 export const getBillBoards = async (id: string): Promise<Billboard> => {
-    const res = await fetch(`${URL}/${id}`, {
-        cache: "no-cache",
-    });
+    const res = await fetch(`${URL}/${id}`);
 
     if (!res.ok) {
         // This will activate the closest `error.js` Error Boundary

@@ -2,7 +2,7 @@
 
 const URL = `https://next13-ecommerce-admin.vercel.app/api/c4fc8d10-e419-4c27-9124-5ac7030e581f/colors`;
 
-export const getColors = async () : Promise<Color> => {
+export const getColors = async (): Promise<Color[]> => {
     const res = await fetch(`${URL}`);
 
     if (!res.ok) {

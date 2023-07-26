@@ -2,7 +2,7 @@
 
 const URL = `https://next13-ecommerce-admin.vercel.app/api/c4fc8d10-e419-4c27-9124-5ac7030e581f/sizes`;
 
-export const getSizes = async (): Promise<Size> => {
+export const getSizes = async (): Promise<Size[]> => {
     const res = await fetch(`${URL}`);
 
     if (!res.ok) {
