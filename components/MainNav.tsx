@@ -26,7 +26,7 @@ function MainNav({ data }: Props) {
       {routes.map((route) => (
         <Link key={route.href} href={route.href} className={cn(
           'text-sm font-medium transition-colors hover:text-black',
-          route.active ? 'text-black' : 'text-neutral-500'
+          route.active ? 'text-black border-b-2 border-opacity-100 border-b-black' : 'text-neutral-500'
         )} >
           {route.label}
         </Link>
