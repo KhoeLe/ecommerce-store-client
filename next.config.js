@@ -12,6 +12,7 @@ const nextConfig = {
         imageSizes: [16, 32, 48, 64, 96], // Define the image sizes to be generated
         formats: ["image/webp"], // Define the image formats to be generated
     },
+    output: 'standalone',
 };
 
 module.exports = nextConfig;
