@@ -19,7 +19,7 @@
     "autoprefixer": "10.4.16",
     "clsx": "^2.0.0",
     "date-fns": "^2.30.0",
-    "eslint": "8.51.0",
+    "eslint": "8.52.0",
     "eslint-config-next": "13.5.5",
     "lucide-react": "^0.284.0",
     "nextjs-toploader": "^1.4.2",
