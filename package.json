@@ -21,7 +21,7 @@
     "date-fns": "^3.0.0",
     "eslint": "9.1.1",
     "eslint-config-next": "14.2.3",
-    "lucide-react": "^0.358.0",
+    "lucide-react": "^0.378.0",
     "nextjs-toploader": "^1.4.2",
     "next": "14.2.3",
     "postcss": "8.4.35",
