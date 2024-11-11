@@ -24,7 +24,7 @@
     "lucide-react": "^0.378.0",
     "nextjs-toploader": "^1.4.2",
     "next": "14.2.3",
-    "postcss": "8.4.35",
+    "postcss": "8.4.49",
     "query-string": "^9.0.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
